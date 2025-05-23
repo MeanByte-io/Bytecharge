@@ -19,7 +19,7 @@ The recommended way to install **Bytecharge** is using the official **Byteloader
 
 ### ✅ **Steps:**
 
-1. Download **Byteloader** from the [Releases](https://github.com/MeanByte/Bytecharge/releases) section or the [official website](https://bytecharger.42web.io).
+1. Download **Byteloader** from the [Releases](https://github.com/MeanByte-io/Bytecharge/releases) section or the [official website](https://bytecharger.42web.io).
 2. Run **Byteloader**; it will automatically detect your operating system and download the appropriate **Bytecharge** binary.
 3. For Linux users, **Byteloader** also configures the language globally, making the `bytecharge` command accessible system-wide.
 
