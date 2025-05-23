@@ -43,19 +43,14 @@ func main() {
 	fmt.Printf("\nDownload completed: %s\n", fileName)
 
 	if osName == "linux" {
-		fmt.Println("Making Bytecharge globally accessible...")
-		err := globalizeLinux(fileName)
-		if err != nil {
-			fmt.Printf("Error making global: %v\n", err)
-			return
-		}
-		fmt.Println("Done! You can now run 'Bytecharge' from anywhere.")
+		handleLinux(fileName)
+	} else if osName == "windows" {
+		handleWindows(fileName)
 	} else {
 		fmt.Println("To use Bytecharge, run the downloaded file directly.")
 	}
 }
 
-// Download file with progress bar and estimated time
 func downloadFileWithProgress(url, fileName string) error {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -73,7 +68,7 @@ func downloadFileWithProgress(url, fileName string) error {
 	var downloaded int64 = 0
 	start := time.Now()
 
-	buf := make([]byte, 32*1024) // 32 KB buffer
+	buf := make([]byte, 32*1024)
 	for {
 		nr, er := resp.Body.Read(buf)
 		if nr > 0 {
@@ -96,15 +91,14 @@ func downloadFileWithProgress(url, fileName string) error {
 			return er
 		}
 	}
-	fmt.Println() // line break after download
+	fmt.Println()
 	return nil
 }
 
-// Display progress bar with estimated time
 func printProgress(downloaded, total int64, start time.Time) {
 	percent := float64(downloaded) / float64(total) * 100
 	elapsed := time.Since(start).Seconds()
-	speed := float64(downloaded) / 1024 / elapsed // KB/s
+	speed := float64(downloaded) / 1024 / elapsed
 
 	var eta float64
 	if speed > 0 {
@@ -125,19 +119,110 @@ func printProgress(downloaded, total int64, start time.Time) {
 	fmt.Printf("\r[%s] %.2f%% | %.2f KB/s | ETA: %.0fs", bar, percent, speed, eta)
 }
 
-// On Linux, move the file to /usr/local/bin to make it globally accessible
+func handleLinux(fileName string) {
+	fmt.Println("Checking for C compiler on Linux...")
+	if !checkCCompiler() {
+		fmt.Println("No C compiler found. Attempting to install one...")
+		if err := installCCompiler(); err != nil {
+			fmt.Printf("Failed to install C compiler: %v\n", err)
+			return
+		}
+	} else {
+		fmt.Println("C compiler found.")
+	}
+
+	fmt.Println("Making Bytecharge globally accessible...")
+	err := globalizeLinux(fileName)
+	if err != nil {
+		fmt.Printf("Error making global: %v\n", err)
+		return
+	}
+	fmt.Println("Done! You can now run 'Bytecharge' from anywhere.")
+}
+
 func globalizeLinux(fileName string) error {
-	// Make it executable
 	err := os.Chmod(fileName, 0755)
 	if err != nil {
 		return err
 	}
 
-	// Move to /usr/local/bin (may require sudo)
 	cmd := exec.Command("mv", fileName, "/usr/local/bin/"+fileName)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
 	return cmd.Run()
+}
+
+func handleWindows(fileName string) {
+	fmt.Println("Checking for C compiler on Windows...")
+
+	if !checkCCompilerWindows() {
+		fmt.Println("No C compiler found on your system.")
+		fmt.Println("Recommended: Install MinGW (https://www.mingw-w64.org/downloads/)")
+		fmt.Println("or use Visual Studio with C++ tools.")
+	} else {
+		fmt.Println("C compiler found.")
+	}
+
+	fmt.Printf("You can run '%s' directly or add its directory to your PATH.\n", fileName)
+}
+
+func checkCCompiler() bool {
+	commands := []string{"gcc", "clang", "cc"}
+
+	for _, cmd := range commands {
+		_, err := exec.LookPath(cmd)
+		if err == nil {
+			return true
+		}
+	}
+	return false
+}
+
+func installCCompiler() error {
+	pkgManagers := map[string][]string{
+		"apt":        {"sudo", "apt", "update"},
+		"aptInstall": {"sudo", "apt", "install", "-y", "build-essential"},
+		"dnf":        {"sudo", "dnf", "install", "-y", "gcc"},
+		"yum":        {"sudo", "yum", "install", "-y", "gcc"},
+		"pacman":     {"sudo", "pacman", "-Syu", "--noconfirm", "base-devel"},
+		"zypper":     {"sudo", "zypper", "install", "-y", "gcc"},
+	}
+
+	for pm := range pkgManagers {
+		if _, err := exec.LookPath(pm); err == nil {
+			fmt.Printf("Detected package manager: %s\n", pm)
+			if pm == "apt" {
+				if err := runCommand(pkgManagers["apt"]); err != nil {
+					return err
+				}
+				return runCommand(pkgManagers["aptInstall"])
+			}
+			return runCommand(pkgManagers[pm])
+		}
+	}
+
+	return fmt.Errorf("no supported package manager found, please install a C compiler manually")
+}
+
+func runCommand(cmdArgs []string) error {
+	cmd := exec.Command(cmdArgs[0], cmdArgs[1:]...)
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	return cmd.Run()
+}
+
+func checkCCompilerWindows() bool {
+	commands := []string{"gcc", "cl"}
+
+	for _, cmd := range commands {
+		_, err := exec.LookPath(cmd)
+		if err == nil {
+			return true
+		}
+	}
+	return false
 }
