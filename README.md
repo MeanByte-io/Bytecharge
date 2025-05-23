@@ -53,7 +53,7 @@ By using **Bytecharge**, you agree to the terms and conditions set forth by **Me
 
 * 🌐 [Website](https://bytecharger.42web.io)
 * 📦 [Releases](https://github.com/MeanByte-io/Bytecharge/releases)
-* 📚 [Documentation Wiki](https://github.com/MeanByte/Bytecharge/wiki)
+* 📚 [Documentation Wiki](https://github.com/MeanByte-io/Bytecharge/wiki)
 
 ---
 
