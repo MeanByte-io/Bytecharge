@@ -55,7 +55,7 @@ pip3 install pycryptodome
 That's it! Now, every time you want to run Bytecharge, just use the command `source bytecharge/bin/activate` to enter the virtual environment, and use the “Bytecharge” command normally.
 
 ### **Code editor:**
-Bytecharge is officially supported by NowbyteIDE. You can program without limits, quickly and easily there! [Click here to download](https://meanbyte.itch.io/nowbyteide).
+Bytecharge is officially supported by NowbyteIDE. You can program without limits, quickly and easily there! [Click here to download](https://nowbyte.42web.io).
 
 ---
 
