@@ -38,7 +38,7 @@ pip3 install pycryptodome
 On Windows, you can download Python from the [official website](https://www.python.org/downloads/windows/), and use the same command in pip to install pycryptodome.
 
 
-### ✅ **Steps:**
+### ✅ **Step by step to install:**
 
 1. Download **Byteloader** from the [Releases](https://github.com/MeanByte-io/Bytecharge/releases) section or the [official website](https://bytecharger.42web.io).
 2. Run **Byteloader**; it will automatically detect your operating system and download the appropriate **Bytecharge** binary.
