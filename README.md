@@ -77,7 +77,7 @@ The full documentation, including tutorials, language specifications, and advanc
 
 By using **Bytecharge**, you agree to the terms and conditions set forth by **MeanByte**.
 
-#### [Click here to read MeanByte's terms and conditions](https://github.com/MeanByte-io/Bytecharge/blob/main/terms and conditions.md)
+- [Click here to read MeanByte's terms and conditions](https://github.com/MeanByte-io/Bytecharge/blob/main/terms and conditions.md)
 
 > As mentioned in the license, Bytecharge is not open-source, but Byteloader is an external tool and is open-source, accepting contributions!
 
