@@ -52,6 +52,7 @@ source bytecharge/bin/activate
 pip3 install pycryptodome
 ```
 That's it! Now, every time you want to run Bytecharge, just use the command `source bytecharge/bin/activate` to enter the virtual environment, and use the “Bytecharge” command normally.
+
 ---
 
 ## 📖 **Documentation**
