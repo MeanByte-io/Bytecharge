@@ -42,7 +42,8 @@ On Windows, you can download Python from the [official website](https://www.pyth
 
 1. Download **Byteloader** from the [Releases](https://github.com/MeanByte-io/Bytecharge/releases) section or the [official website](https://bytecharger.42web.io).
 2. Run **Byteloader**; it will automatically detect your operating system and download the appropriate **Bytecharge** binary.
-3. For Linux users, **Byteloader** also configures the language globally, making the `bytecharge` command accessible system-wide.
+- To run Byteloader on Linux, navigate to the directory where it was downloaded from the terminal, and run it from the terminal using sudo, for example: `sudo ./Byteloader`
+4. For Linux users, **Byteloader** also configures the language globally, making the `bytecharge` command accessible system-wide.
 
 ### Common errors
 On some Linux distributions, Python may conflict, interfering with the execution of Bytecharge, since it depends not only on a C compiler, but also on Python. The easiest way to solve this is to create a virtual environment for Bytecharge and install the dependencies. By default, when using Byteloader, Bytecharge is installed in the root directory and is accessible throughout the system via the terminal. So, just use the following commands to resolve this conflict (if it occurs):
