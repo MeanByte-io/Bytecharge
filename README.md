@@ -1,4 +1,4 @@
-<img src='bytecharge.png' width='200'>
+<img src='bytecharge_icon_transparent.png' width='350'>
 
 **Bytecharge** is a modern programming language designed for high-performance software development, offering simplicity, efficiency, and portability. It is the official product of **MeanByte**.
 
