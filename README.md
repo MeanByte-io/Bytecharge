@@ -42,7 +42,7 @@ On Windows, you can download Python from the [official website](https://www.pyth
 
 1. Download **Byteloader** from the [Releases](https://github.com/MeanByte-io/Bytecharge/releases) section or the [official website](https://bytecharger.42web.io).
 2. Run **Byteloader**; it will automatically detect your operating system and download the appropriate **Bytecharge** binary.
-- To run Byteloader on Linux, navigate to the directory where it was downloaded from the terminal, and run it from the terminal using sudo, for example: `sudo ./Byteloader`
+- To run Byteloader on Linux, navigate to the directory where it was downloaded from the terminal, and run it from the terminal using sudo, for example: `sudo ./Byteloader`. Don't forget to give permission to the file to run it as an executable!
 4. For Linux users, **Byteloader** also configures the language globally, making the `bytecharge` command accessible system-wide.
 
 ### Common errors
