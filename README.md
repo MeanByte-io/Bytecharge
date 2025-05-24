@@ -58,7 +58,7 @@ That's it! Now, every time you want to run Bytecharge, just use the command `sou
 
 ## 📖 **Documentation**
 
-The full documentation, including tutorials, language specifications, and advanced usage examples, is available in the **[Wiki](https://github.com/MeanByte/Bytecharge/wiki)** section of this repository.
+The full documentation, including tutorials, language specifications, and advanced usage examples, is available in the **[Wiki](https://github.com/MeanByte-io/Bytecharge/wiki)** section of this repository.
 
 ---
 
