@@ -1,3 +1,5 @@
+<img src='bytecharge.png' width='512'>
+
 # **Bytecharge** ⚡️
 
 **Bytecharge** is a modern programming language designed for high-performance software development, offering simplicity, efficiency, and portability. It is the official product of **MeanByte**.
