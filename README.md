@@ -1,4 +1,4 @@
-<img src='bytecharge.png' width='512'>
+<img src='bytecharge.png' width='200'>
 
 # **Bytecharge** ⚡️
 
